@@ -5,7 +5,7 @@ import rclpy
 import math
 from rclpy.action import ActionClient
 from rclpy.node import Node
-from om_aiv_msg.action import Action
+from amr_msgs.action import Action
 from geometry_msgs.msg import PoseStamped
 
 GOTO_POINT_COMMAND = "doTask gotoPoint "

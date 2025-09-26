@@ -5,8 +5,8 @@
 #include <memory>
 
 #include "rclcpp/rclcpp.hpp"
-#include "om_aiv_msg/srv/arcl_api.hpp"
-#include "om_aiv_msg/srv/arcl_listen.hpp"
+#include "amr_msgs/srv/arcl_api.hpp"
+#include "amr_msgs/srv/arcl_listen.hpp"
 #include "amr_test/utils.hpp"
 
 
@@ -21,9 +21,9 @@ int main(int argc, char const *argv[]) {
     rclcpp::init(argc, argv);
     std::shared_ptr<rclcpp::Node> node = rclcpp::Node::make_shared("get_macros");
     auto srv_name = "arcl_api_service";
-    auto client = node->create_client<om_aiv_msg::srv::ArclApi>(srv_name);
+    auto client = node->create_client<amr_msgs::srv::ArclApi>(srv_name);
 
-    auto request = std::make_shared<om_aiv_msg::srv::ArclApi::Request>();
+    auto request = std::make_shared<amr_msgs::srv::ArclApi::Request>();
     request->command = "getMacros";
     request->line_identifier = "End of macros";
 

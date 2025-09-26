@@ -1,18 +1,18 @@
 import rclpy
 import time
 from rclpy.action import ActionServer
-from om_aiv_util.socket_taskmaster import *
-from om_aiv_util.parser import *
-from om_aiv_msg.action import Action
+from amr_core.socket_taskmaster import *
+from amr_core.parser import *
+from amr_msgs.action import Action
 from rclpy.node import Node
 
 class LDActionServer(Node):
     def __init__(self):
-        super().__init__('point_add_server')
+        super().__init__('action_server')
         self._action_server = ActionServer(
                     self,
                     Action,
-                    'point_add_server',
+                    'action_server',
                     self.execute_callback)
         self.ip_address = self.declare_parameter("ip_address").value
         self.port = self.declare_parameter("port").value
@@ -46,7 +46,7 @@ class LDActionServer(Node):
                 goal.publish_feedback(self._feedback)
                 self._result.res_msg = result.decode()
                 goal.succeed()
-                self.get_logger().info("point_add_server: " + self._result.res_msg)
+                self.get_logger().info("action_server.py: " + self._result.res_msg)
                 break
             else:
                 parse = self.parser.process_arcl_server(feedback.decode())

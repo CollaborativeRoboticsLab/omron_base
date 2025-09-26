@@ -18,7 +18,7 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
-find_package(om_aiv_msg REQUIRED)
+find_package(amr_msgs REQUIRED)
 find_package(rclcpp_action REQUIRED)
 find_package(rclcpp_components REQUIRED)
 
@@ -40,7 +40,7 @@ target_include_directories(get_macros
     $<INSTALL_INTERFACE:include>)
 
 ament_target_dependencies(get_macros
-  rclcpp om_aiv_msg)
+  rclcpp amr_msgs)
 
 add_library(action_client SHARED
   src/demo_execute_macro.cpp)
@@ -51,7 +51,7 @@ target_compile_definitions(action_client
   PRIVATE "ACTION_TUTORIALS_CPP_BUILDING_DLL")
 
  ament_target_dependencies(action_client
-  "om_aiv_msg"
+  "amr_msgs"
   "rclcpp"
   "rclcpp_action"
   "rclcpp_components")

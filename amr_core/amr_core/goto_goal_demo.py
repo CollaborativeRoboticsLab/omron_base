@@ -3,7 +3,7 @@
 import rclpy
 import sys
 import time
-from om_aiv_navigation.goto_goal import AmrActionClient
+from amr_core.goto_goal import AmrActionClient
 
 def main():
     try:

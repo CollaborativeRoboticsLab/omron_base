@@ -5,7 +5,7 @@
 #include <sstream>
 #include <string>
 
-#include "om_aiv_msg/action/action.hpp"
+#include "amr_msgs/action/action.hpp"
 
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
@@ -20,7 +20,7 @@ namespace demo
   class ActionClient : public rclcpp::Node
   {
   public:
-    using Action = om_aiv_msg::action::Action;
+    using Action = amr_msgs::action::Action;
     using GoalHandleAction = rclcpp_action::ClientGoalHandle<Action>;
 
     explicit ActionClient(const rclcpp::NodeOptions &options)

@@ -4,7 +4,7 @@ from __future__ import print_function
 import rclpy
 from rclpy.action import ActionClient
 from rclpy.node import Node
-from om_aiv_msg.action import Action
+from amr_msgs.action import Action
 
 class AmrActionClient(Node):
 
