@@ -19,9 +19,9 @@ def load_file(package_name, file_path):
 
 
 def generate_launch_description():
-    #robot_description_config = load_file('amr_description', 'urdf/AMR_Platform.urdf')
+    robot_description_config = load_file('amr_description', 'urdf/AMR_Platform.urdf')
     # robot_description_config = load_file('amr_description', 'urdf/LD90.urdf')
-    robot_description_config = load_file('amr_description', 'urdf/LD250.urdf')
+    # robot_description_config = load_file('amr_description', 'urdf/LD250.urdf')
     robot_description = {'robot_description' : robot_description_config}
 
     vis_config = get_package_share_directory('amr_description') + "/param/vis_param.yaml"
@@ -69,14 +69,14 @@ def generate_launch_description():
     
     # RViz goto point node
     goto_point_node = Node(
-        package='om_aiv_navigation',
+        package='amr_core',
         executable='goto_point',
         output='screen',
     )
     
     # RViz goto point node
     localize_at_point_node = Node(
-        package='om_aiv_navigation',
+        package='amr_core',
         executable='localize_at_point',
         output='screen',
     )
