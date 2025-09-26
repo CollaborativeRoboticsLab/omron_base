@@ -54,6 +54,15 @@ source install/setup.bash
 ros2 launch amr_description ld250.launch.py
 ```
 
+### Connect with the robot base
+
+Run the following command to connect to the robot.
+
+```sh
+source install/setup.bash
+ros2 launch amr_ros amr_connect.launch.py
+```
+
 ### TM Robot Arm with Moveit 
 
 TM driver node is included in the tm12x_run_move_group.launch.py file. Replace the `<robot_ip_address>` with actual ip address.
