@@ -35,7 +35,6 @@ def generate_launch_description():
         arguments=['-d', rviz_config_file],
         )
 
-
     # Publish Robot
     robot_state_publisher = Node(
         package='robot_state_publisher',
