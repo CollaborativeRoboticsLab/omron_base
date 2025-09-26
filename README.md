@@ -47,11 +47,11 @@ colcon build
 
 ### Start with visualization
 
-Run the following command to visualize robot
+Run the following command to visualize robot. Swap `ld250` with `ld90` or `amr_platform` for other robot models.
 
 ```sh
 source install/setup.bash
-ros2 launch amr_description display.launch.py
+ros2 launch amr_description ld250.launch.py
 ```
 
 ### TM Robot Arm with Moveit 
