@@ -49,6 +49,8 @@ The LD250 wrapper launch uses [amr_ros/config/ld250_parameters.yaml](../amr_ros/
 - `laser.low_laser.range_min`: minimum valid range in meters.
 - `laser.low_laser.range_max`: maximum valid range in meters.
 
+For the LD250 description, the default robot model now publishes both `laser_frame` and `laser_frame_low`. The base-only launch in [../amr_ros/launch/amr_core.launch.py](../amr_ros/launch/amr_core.launch.py) still loads [../amr_description/urdf/LD250.urdf](../amr_description/urdf/LD250.urdf) unless a parent launch overrides `robot_description`.
+
 The published angle increment is inferred from the packet when enough points are available. The configured increment is only used as a fallback.
 
 ## `driver.*`

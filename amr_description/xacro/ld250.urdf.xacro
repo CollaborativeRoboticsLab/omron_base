@@ -4,8 +4,9 @@
   <!--
     Updated to match LD250.urdf:
     - Adds laser_frame link
-    - Adds base_link_to_laser_frame fixed joint at xyz="0.45 0 0.195"
-    - Keeps main_body mesh, inertial, and fixed joints
+    - Adds laser_frame_low link
+    - Adds base_link_to_laser_frame fixed joint at xyz="0.40 0 0.190"
+    - Keeps amr_base mesh, inertial, and fixed joints
   -->
 
   <xacro:macro name="ld250" params="prefix:='' parent:='' xyz:='0 0 0' rpy:='0 0 0' mesh_pkg:='amr_description'">
@@ -19,7 +20,7 @@
     </link>
 
     <!-- Main body with mesh -->
-    <link name="${prefix}main_body">
+    <link name="${prefix}amr_base">
       <visual>
         <origin rpy="0 0 3.141582654" xyz="0 0 0"/>
         <geometry>
@@ -39,10 +40,10 @@
       </inertial>
     </link>
 
-    <!-- Base to main body fixed joint -->
-    <joint name="${prefix}main_body_to_base" type="fixed">
+    <!-- Base link to main body fixed joint -->
+    <joint name="${prefix}amr_base_to_base_link" type="fixed">
       <parent link="${prefix}base_link"/>
-      <child link="${prefix}main_body"/>
+      <child link="${prefix}amr_base"/>
       <origin xyz="0 0 0"/>
     </joint>
 
@@ -54,7 +55,17 @@
     <joint name="${prefix}base_link_to_laser_frame" type="fixed">
       <parent link="${prefix}base_link"/>
       <child link="${prefix}laser_frame"/>
-      <origin xyz="0.45 0 0.195"/>
+      <origin xyz="0.40 0 0.190"/>
+    </joint>
+
+        <!-- Low front laser frame -->
+    <link name="${prefix}laser_frame_low">
+    </link>
+
+    <joint name="${prefix}base_link_to_laser_frame_low" type="fixed">
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}laser_frame_low"/>
+      <origin xyz="0.40 0 0.060"/>
     </joint>
 
     <!-- Optional mounting to an external parent -->
@@ -65,15 +76,21 @@
         <origin xyz="${xyz}" rpy="${rpy}"/>
       </joint>
     </xacro:if>
-
     <!--
-      Dimensions (from LD250.urdf comments):
-      - length: 950 mm
-      - width: 696 mm
-      - laser glass offset front: 20 mm
-      - laser glass offset back: 120 mm
-      - laser glass bottom height: 180 mm
-      - laser glass top height: 210 mm
+      Dimensions (from https://files.omron.eu/downloads/latest/datasheet/en/i828_ld-series_mobile_robot_datasheet_en.pdf?v=2):
+      - length: 970 mm
+      - width: 720 mm
+      - base height: 380 mm
+      - laser glass center height: 190 mm
+
+      Dimensions roughly measured
+      - laser glass offset front: 35 mm
+      - laser glass offset back: 135 mm
+      - lower laser glass center height: 60 mm
+
+      Calaculated from the above dimensions:
+      - laser center from the middle of the robot: (970/2 - 135 + (135-35)/2) mm = 400 mm
+
     -->
   </xacro:macro>
 </robot>
